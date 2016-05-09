@@ -9,13 +9,13 @@ import { HeroService } from './hero.service';
         <h1>{{title}}</h1>
         <h2>My Heroes</h2>
         <ul class="heroes">
-            <li *ngFor="let hero of heroes" 
+            <li *ngFor="let hero of heroes"
                 [class.selected] = "hero === selectedHero"
                 (click)="onSelect(hero)">
                 <span class="badge"> {{hero.id}} </span> {{hero.name}}
             </li>
         </ul>
-        <hero-detail [hero]="selectedHero"></hero-detail>        
+        <hero-detail [hero]="selectedHero"></hero-detail>
         `,
     styles:[`
     .selected {
@@ -72,18 +72,18 @@ import { HeroService } from './hero.service';
 
 export class AppComponent implements OnInit {
     title = 'Tour of Heroes';
+    heroes: Hero[];
     selectedHero: Hero;
-    public heroes: Hero[]; 
-    
-    onSelect(hero:Hero) {this.selectedHero = hero; }
-    
+
     constructor(private heroService: HeroService) { }
-    
+
     getHeroes() {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    this.heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
     }
-    
+
     ngOnInit() {
     this.getHeroes();
     }
+
+    onSelect(hero:Hero) {this.selectedHero = hero; }
 }
