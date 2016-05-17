@@ -7,7 +7,7 @@ import { HeroDetailComponent } from './hero-detail.component';
 
 @Component ({
     selector: 'my-app'
-    template `
+    template: `
     <h1>{{title}}</h1>
     <nav>
         <a [routerLink]="['Dashboard']">Dashboard</a>
@@ -16,6 +16,7 @@ import { HeroDetailComponent } from './hero-detail.component';
     <router-outlet></router-outlet>
     <hero-detail [hero]="selectedHero"></hero-detail>
     `,
+    styleUrls: ['app/app.component.css'],
     directives: [ROUTER_DIRECTIVES],
     providers: [
         ROUTER_PROVIDERS,
