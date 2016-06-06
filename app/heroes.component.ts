@@ -19,7 +19,8 @@ export class HeroesComponent implements OnInit {
     constructor(private heroService: HeroService, private router: Router) { }
 
     getHeroes() {
-        this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+        this.heroService.getHeroes()
+          .then(heroes => this.heroes = heroes);
     }
 
     ngOnInit() {
@@ -27,7 +28,7 @@ export class HeroesComponent implements OnInit {
     }
 
     onSelect(hero:Hero) {this.selectedHero = hero; }
-    
+
     gotoDetail() {
         this.router.navigate(['HeroDetail', { id: this.selectedHero.id}])
     }
