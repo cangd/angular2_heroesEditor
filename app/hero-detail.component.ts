@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, OnDestroy, Output } from '@angular/core';
+
 import { ActivatedRoute } from '@angular/router';
+
 import { Hero }        from './hero';
 import { HeroService } from './hero.service';
+
 @Component({
   selector: 'my-hero-detail',
   templateUrl: 'app/hero-detail.component.html',
@@ -13,10 +16,12 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   error: any;
   sub: any;
   navigated = false; // true if navigated here
+
   constructor(
     private heroService: HeroService,
     private route: ActivatedRoute) {
   }
+
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       if (params['id'] !== undefined) {
@@ -30,9 +35,11 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
       }
     });
   }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
+
   save() {
     this.heroService
         .save(this.hero)
@@ -47,3 +54,10 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
     if (this.navigated) { window.history.back(); }
   }
 }
+
+
+/*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/
